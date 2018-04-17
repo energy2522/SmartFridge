@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<body>
+<th:block th:fragment="header">
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{''}">
+                    <img th:src="@{/img/logo.png}" alt="memorynotfound logo"/>
+                </a>
+            </div>
+            <div sec:authorize="isAuthenticated()" id="navbar" class="collapse navbar-collapse">
+                <ul sec:authorize="hasRole('user')" class="nav navbar-nav">
+                    <li>
+                        <a th:href="@{/user/main}">Home</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/user/fridges}">Fridges</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/}">Add Client</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/}">Show Statistics</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/logout}">Log out</a>
+                    </li>
+                </ul>
+                <ul sec:authorize="hasRole('admin')" class="nav navbar-nav">
+                    <li>
+                        <a th:href="@{/admin/main}">Home</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/admin/fridges}">Fridges</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/admin/users}">Users</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/}">Show Statistics</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/logout}">Log out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</th:block>
+</body>
+</html>

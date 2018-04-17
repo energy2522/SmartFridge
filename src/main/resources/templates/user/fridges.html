@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title>Secured</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <!--<div class="row">-->
+    <div class="col-md-6 col-md-offset-3">
+        <div class="btn-group btn-group-justified">
+            <div class="btn-group">
+                <form th:action="@{/admin/add/fridge}" method="get">
+                    <button type="submit" class="btn btn-primary btn-secondary">Add fridge</button>
+                </form>
+            </div>
+            <div class="btn-group" style="margin-left: 4%">
+                <form th:action="@{''}" method="get">
+                    <button type="button" class="btn btn-primary btn-secondary">Update fridge</button>
+                </form>
+            </div>
+            <div class="btn-group" style="margin-left: 4%">
+                <form th:action="@{''}" method="get">
+                    <button type="button" class="btn btn-primary btn-secondary">Delete fridge</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--</div>-->
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+            <th hidden>Id</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>High</th>
+            <th>Width</th>
+            <th>Amount camera</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="fridge : ${fridges}">
+            <form th:action="@{/user/set/fridge}" method="post">
+                <button name="id" class="btn btn-primary" th:value="${fridge.fridge.id}">Add products</button>
+            </form>
+            <!--<td th:text="${fridge.fridge.id}" hidden></td>-->
+            <td th:text="${fridge.fridge.name}"></td>
+            <td th:text="${fridge.fridge.type}"></td>
+            <td th:text="${fridge.fridge.high}"></td>
+            <td th:text="${fridge.fridge.width}"></td>
+            <td th:text="${fridge.fridge.cameras.size()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

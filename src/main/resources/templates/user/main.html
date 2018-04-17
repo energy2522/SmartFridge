@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title>Secured</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <span style="display: inline-block;">
+                    <h1>Hello,  <span sec:authentication="name"></span> </h1></span>
+</div>
+</body>
+</html>
