@@ -26,9 +26,12 @@ public class Fridge {
     private double width;
 
     @Column(name = "camera_count")
-    private int amountCamera;
+    private int maxCameras;
 
     @Column(name = "price")
     private double price;
+
+    @OneToMany(mappedBy = "fridge")
+    public List<Camera> cameras;
 
 }
