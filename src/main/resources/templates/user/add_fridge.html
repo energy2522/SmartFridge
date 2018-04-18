@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title>Secured</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+            <th hidden>Id</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>High</th>
+            <th>Width</th>
+            <th>Price</th>
+            <th>Max cameras</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="fridge : ${fridges}">
+
+            <td th:text="${fridge.name}"></td>
+            <td th:text="${fridge.type}"></td>
+            <td th:text="${fridge.high}"></td>
+            <td th:text="${fridge.width}"></td>
+            <td th:text="${fridge.price}"></td>
+            <td th:text="${fridge.maxCameras}"></td>
+            <td>
+                <form th:action="@{/user/add/fridge}" method="post">
+                    <button type="submit" name="id" style="width: 90%" th:value="${fridge.id}" class="btn btn-primary btn-secondary">Add</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-11">
+            <form th:action="@{/user/fridges}" method="get">
+                <button type="submit" class="btn btn-primary btn-info">Back</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
