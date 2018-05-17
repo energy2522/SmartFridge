@@ -1,6 +1,7 @@
 package com.smartfridge.controller;
 
 import com.smartfridge.dto.UserDTO;
+import com.smartfridge.entity.Camera;
 import com.smartfridge.entity.Fridge;
 import com.smartfridge.entity.User;
 import com.smartfridge.repository.FridgeRepository;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -57,7 +59,7 @@ public class AdminController {
 
     @RequestMapping(value = "/add/fridge", method = RequestMethod.POST)
     public String addFridge(Fridge fridge, BindingResult bindingResult, Model model) {
-        log.info("new fridge added");
+        log.info("new fridge add {}", fridge);
         fridgeRepository.save(fridge);
 
         return "redirect:/admin/fridges";

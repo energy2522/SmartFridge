@@ -1,6 +1,7 @@
 package com.smartfridge.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,7 +9,8 @@ import java.util.List;
 @Entity
 @Table(name = "fridge")
 @Data
-public class Fridge {
+@ToString
+public class Fridge implements Cloneable{
 
     @Id
     private int id;
@@ -30,8 +32,4 @@ public class Fridge {
 
     @Column(name = "price")
     private double price;
-
-    @OneToMany(mappedBy = "fridge")
-    public List<Camera> cameras;
-
 }

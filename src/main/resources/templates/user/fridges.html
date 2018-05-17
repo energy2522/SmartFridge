@@ -7,7 +7,7 @@
 </head>
 <body>
 <div layout:fragment="content" th:remove="tag">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-7 col-md-offset-2">
         <div class="btn-group btn-group-justified">
             <div class="btn-group">
                 <form th:action="@{/user/add/fridge}" method="get">
@@ -17,11 +17,6 @@
             <div class="btn-group" style="margin-left: 4%">
                 <form th:action="@{''}" method="get">
                     <button type="button" class="btn btn-primary btn-secondary">Update fridge</button>
-                </form>
-            </div>
-            <div class="btn-group" style="margin-left: 4%">
-                <form th:action="@{''}" method="get">
-                    <button type="button" class="btn btn-primary btn-secondary">Delete fridge</button>
                 </form>
             </div>
         </div>
@@ -45,17 +40,36 @@
         </tr>
         </thead>
         <tbody>
-            <td th:text="${fridge.fridge.name}"></td>
-            <td th:text="${fridge.fridge.type}"></td>
-            <td th:text="${fridge.fridge.high}"></td>
-            <td th:text="${fridge.fridge.width}"></td>
-            <td th:text="${fridge.fridge.maxCameras}"></td>
-            <td th:text="${fridge.fridge.cameras.size()}"></td>
-            <td>
-                <form th:action="@{/user/set/fridge}" method="post">
-                    <button name="id" class="btn btn-primary" th:value="${fridge.fridge.id}">Add products</button>
-                </form>
+        <tr th:each="userFridge : ${fridges}">
+            <td th:text="${userFridge.fridge.name}"></td>
+            <td th:text="${userFridge.fridge.type}"></td>
+            <td th:text="${userFridge.fridge.high}"></td>
+            <td th:text="${userFridge.fridge.width}"></td>
+            <td th:text="${userFridge.fridge.maxCameras}"></td>
+            <td th:text="${userFridge.cameras.size()}"></td>
+            <td style="width: 30%;">
+                    <div class="col-md-0 col-md-offset-0">
+                        <div class="btn-group btn-group-justified">
+                            <div class="btn-group">
+                                <form th:action="@{/user/delete/fridge}" method="post">
+                                    <button name="id" th:value="${userFridge.id}" class="btn btn-primary">Delete</button>
+                                </form>
+                            </div>
+
+                            <div class="btn-group" style="width: 0.1%">
+
+                            </div>
+
+                            <div class="btn-group">
+                                <form th:action="@{/user/get/fridge}" method="post">
+                                    <button name="id" class="btn btn-primary" th:value="${userFridge.id}">Cameras
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                </div>
             </td>
+
         </tr>
         </tbody>
     </table>

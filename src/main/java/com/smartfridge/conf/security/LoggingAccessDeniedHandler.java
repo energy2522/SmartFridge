@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
@@ -24,11 +25,15 @@ public class LoggingAccessDeniedHandler implements AccessDeniedHandler {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
+        String role = auth.getAuthorities().toString().split("_")[1].replace("]", "");
+
         if (auth != null) {
             log.info(auth.getName()
                     + " was trying to access protected resource: "
                     + request.getRequestURI());
         }
+
+        request.setAttribute("home", "/" + role + "/main");
 
         response.sendRedirect(request.getContextPath() + "/access-denied");
 

@@ -3,6 +3,7 @@ package com.smartfridge.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user_fridge")
@@ -10,6 +11,7 @@ import javax.persistence.*;
 public class UserFridge {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
@@ -17,4 +19,7 @@ public class UserFridge {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Fridge fridge;
+
+    @OneToMany(mappedBy = "userFridge")
+    private List<Camera> cameras;
 }

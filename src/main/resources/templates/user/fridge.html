@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title>Secured</title>
+</head>
+<body>
+<div layout:fragment="content" th:remove="tag">
+
+
+
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+            <th>Fridge</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="camera : ${fridge.cameras}">
+            <td th:if="${camera.type == null}" th:text="${'Not set'}" style="width: 30%"></td>
+            <td th:if="${camera.type != null && camera.product == null}" th:text="${camera.type + '/ Empty'}"
+                style="width: 30%;"></td>
+            <td th:if="${camera.type != null && camera.product != null}"
+                th:text="${camera.type + ' / ' + camera.product.name + ' / ' + camera.amount}" style="width: 30%;"></td>
+            <td style="width: 30%;">
+                <div class="col-md-0 col-md-offset-0">
+                    <div class="btn-group btn-group-justified">
+                        <div class="btn-group">
+                            <form th:action="@{''}" method="get">
+                                <button type="button" name="id" th:value="${camera.id}"
+                                        class="btn btn-primary btn-secondary">Make clear
+                                </button>
+                            </form>
+                        </div>
+                        <div class="btn-group" style="width: 0.1%">
+
+                        </div>
+
+                        <div class="btn-group">
+                            <form th:action="@{/user/set/camera}" method="post">
+                                <button name="id" class="btn btn-primary" th:value="${camera.id}">Set
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <div class="col-md-2 col-md-offset-5">
+        <div class="btn-group btn-group-justified">
+            <div class="btn-group">
+                <form th:action="@{/user/add/fridge}" method="get">
+                    <button type="submit" class="btn btn-primary btn-secondary">Back</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

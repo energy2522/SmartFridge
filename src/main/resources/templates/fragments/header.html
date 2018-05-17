@@ -4,11 +4,11 @@
 <th:block th:fragment="header">
     <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container">
-            <div class="navbar-header">
+            <!--<div class="navbar-header">
                 <a class="navbar-brand" th:href="@{''}">
                     <img th:src="@{/img/logo.png}" alt="memorynotfound logo"/>
                 </a>
-            </div>
+            </div>-->
             <div sec:authorize="isAuthenticated()" id="navbar" class="collapse navbar-collapse">
                 <ul sec:authorize="hasRole('user')" class="nav navbar-nav">
                     <li>
@@ -18,10 +18,10 @@
                         <a th:href="@{/user/fridges}">Fridges</a>
                     </li>
                     <li>
-                        <a th:href="@{/}">Add Client</a>
+                        <a th:href="@{''}">Add Client</a>
                     </li>
                     <li>
-                        <a th:href="@{/}">Show Statistics</a>
+                        <a th:href="@{''}">Show Statistics</a>
                     </li>
                     <li>
                         <a th:href="@{/logout}">Log out</a>
@@ -38,7 +38,7 @@
                         <a th:href="@{/admin/users}">Users</a>
                     </li>
                     <li>
-                        <a th:href="@{/}">Show Statistics</a>
+                        <a th:href="@{''}">Show Statistics</a>
                     </li>
                     <li>
                         <a th:href="@{/logout}">Log out</a>

@@ -8,7 +8,8 @@
 <body>
 <div layout:fragment="content" th:remove="tag">
     <h1>Access denied</h1>
-    <p><a href="/" th:href="@{/}">Back to home page</a></p>
+    <p><a href="/" th:href="${home}">Back to home page</a></p>
+    <button th:value="${home}">text</button>
 </div>
 </body>
 </html>
