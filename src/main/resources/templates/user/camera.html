@@ -47,11 +47,11 @@
                 <td>
                     <div class="form-group blu-margin">
                         <select class="form-control" th:field="${camera.product}">
-                            <option th:if="${camera.product != null}" th:value="${camera.product.name}"
+                             <option th:if="${camera.product != null}" th:value="${camera.product.id}"
                                     th:text="${camera.product.name}"></option>
-                            <option th:if="${camera.product == null}" th:value=${''} th:text=${''}></option>
-                            <option th:each="product : ${products}" th:value="${product.name}"
-                                    th:text="${product.name}"/>
+                             <option th:if="${camera.product == null}" th:value=${''} th:text=${''}></option>
+;                            <option th:each="product : ${products}" th:value="${product.id}"
+                                    th:text="${product.name}"></option>
                         </select>
                     </div>
                 </td>

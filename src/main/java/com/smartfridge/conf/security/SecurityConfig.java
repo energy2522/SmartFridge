@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Slf4j
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -40,7 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers(
-                "/",
+                        "/",
+                        "/rest/cameras",
                         "/js/**",
                         "/css/**",
                         "/img/**",
@@ -48,8 +50,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/user/**").hasRole(Role.USER.toString())
                     .antMatchers("/admin/**").hasRole(Role.ADMIN.toString())
                     .antMatchers("/main").hasAnyRole(Role.ADMIN.toString(), Role.USER.toString())
-//                    .antMatchers("/rest/*").hasAnyRole()
-                //                    .anyRequest
                 .and()
                 .formLogin()
                     .loginPage("/login")

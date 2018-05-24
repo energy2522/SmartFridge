@@ -3,6 +3,7 @@ package com.smartfridge.entity;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "product")
 @Data
+@ToString
 public class Product {
 
     @Id

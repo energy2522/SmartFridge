@@ -1,7 +1,9 @@
 package com.smartfridge.entity;
 
 import com.smartfridge.constants.CameraType;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -9,6 +11,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "camera")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class Camera {
 
@@ -27,6 +31,9 @@ public class Camera {
 
     @ManyToOne
     private Product product;
+
+    @Transient
+    private String userId;
 
     @ManyToOne
     private UserFridge userFridge;

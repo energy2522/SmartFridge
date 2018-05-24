@@ -1,7 +1,7 @@
 package com.smartfridge.constants;
 
 public enum Role {
-    USER("user"), ADMIN("admin");
+    USER("user"), ADMIN("admin"), FRIDGE("fridge");
 
     private String value;
 
